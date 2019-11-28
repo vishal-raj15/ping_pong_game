@@ -9,7 +9,7 @@ const user = {
     x:0,
     y:cnvs.height/2 - 50,
     width:10,
-    height:150,
+    height:180,
     color:"WHITE",
     score:0
 }
@@ -18,7 +18,7 @@ const comp = {
     x:cnvs.width - 30,
     y:cnvs.height/2 - 50,
     width:10,
-    height:150,
+    height:180,
     color:"WHITE",
     score:0
 }
