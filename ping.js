@@ -9,7 +9,7 @@ const user = {
     x:0,
     y:cnvs.height/2 - 50,
     width:10,
-    height:150,
+    height:220,
     color:"WHITE",
     score:0
 }
@@ -18,7 +18,7 @@ const comp = {
     x:cnvs.width - 30,
     y:cnvs.height/2 - 50,
     width:10,
-    height:150,
+    height:220,
     color:"WHITE",
     score:0
 }
@@ -142,7 +142,7 @@ function update()
         let dir = (ball.x < cnvs.width/2) ? 1 : -1;
         ball.vx = dir * ball.speed * Math.cos(ang);
         ball.vy = ball.speed * Math.sin(ang);
-        ball.speed += 0.7;
+        ball.speed += 1;
         
     }
     if(ball.x + ball.radius< 0 || (ball.x.radius<0 && ball.y > cnvs.height)){
