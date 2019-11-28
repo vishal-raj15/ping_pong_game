@@ -124,7 +124,7 @@ function update()
     ball.x += ball.vx;
     ball.y += ball.vy;
 
-    let cl = 0.1;
+    let cl = 0.4;
     comp.y += (ball.y - (comp.y + comp.height/2))*cl; 
 
     if(ball.y + ball.radius > cnvs.height || ball.y + ball.radius < 0)
