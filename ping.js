@@ -88,13 +88,13 @@ function drawtext(text,x,y,color)
     ctx.fillText(text,x,y);
 }
 
-// cnvs.addEventListener("mousemove",movepaddle);
+cnvs.addEventListener("mousemove",movepaddle);
 
-// function movepaddle(evt)
-// {
-//     let rect = cnvs.getBoundingClientRect();
-//     user.y = evt.clientY - rect.top-user.height/2;
-// }
+function movepaddle(evt)
+{
+    let rect = cnvs.getBoundingClientRect();
+    user.y = evt.clientY - rect.top-user.height/2;
+}
 
 document.onkeydown =keypress;
 
