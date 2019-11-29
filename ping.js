@@ -7,7 +7,7 @@ cnvs.width = window.innerWidth;
 
 const user = {
     x:0,
-    y:cnvs.height/2 - 50,
+    y:cnvs.height/2 - 50 ,
     width:10,
     height:220,
     color:"WHITE",
@@ -16,7 +16,7 @@ const user = {
 
 const comp = {
     x:cnvs.width - 30,
-    y:cnvs.height/2 - 50,
+    y:user.y,
     width:10,
     height:220,
     color:"WHITE",
@@ -25,11 +25,11 @@ const comp = {
 
 const ball = {
     x:cnvs.width/2,
-    y:Math.random()*cnvs.height/2,
+    y:cnvs.height/2,
     radius:10,
-    speed:5,
+    speed:8,
     vx:5,
-    vy:5,
+    vy:0,
     color:"WHITE"
 
 }
@@ -38,7 +38,7 @@ const ball2 = {
     x:cnvs.width/2,
     y: Math.random()*cnvs.height,
     radius:10,
-    speed:5,
+    speed:7,
     vx:50,
     vy:50,
     color:"WHITE"
@@ -88,13 +88,26 @@ function drawtext(text,x,y,color)
     ctx.fillText(text,x,y);
 }
 
-cnvs.addEventListener("mousemove",movepaddle);
+// cnvs.addEventListener("mousemove",movepaddle);
 
-function movepaddle(evt)
-{
-    let rect = cnvs.getBoundingClientRect();
-    user.y = evt.clientY - rect.top-user.height/2;
+// function movepaddle(evt)
+// {
+//     let rect = cnvs.getBoundingClientRect();
+//     user.y = evt.clientY - rect.top-user.height/2;
+// }
+
+document.onkeydown =keypress;
+
+function keypress(key){
+	if(key.keyCode == "38" && user.y >=0){
+
+		user.y -=20; 
+	}
+	if(key.keyCode == "40"  && user.y < cnvs.height-175){
+		user.y +=20;
+	}
 }
+
 
 function collision(b,p){
     b.top = b.y - b.radius;
@@ -113,17 +126,18 @@ function collision(b,p){
 function reset(){
     ball.x = cnvs.width/2;
     ball.y = Math.random()*cnvs.height;
-    ball.speed = 5;
+    ball.speed = 8;
     ball.vx = 5;
     ball.vy=5;
 }
 
 function update()
 {
+
     ball.x += ball.vx;
     ball.y += ball.vy;
 
-    let cl = 0.4;
+    let cl = 0.1;
     comp.y += (ball.y - (comp.y + comp.height/2))*cl; 
 
     if(ball.y + ball.radius > cnvs.height || ball.y + ball.radius < 0)
@@ -142,10 +156,10 @@ function update()
         let dir = (ball.x < cnvs.width/2) ? 1 : -1;
         ball.vx = dir * ball.speed * Math.cos(ang);
         ball.vy = ball.speed * Math.sin(ang);
-        ball.speed += 1;
+        ball.speed += 0.4;
         
     }
-    if(ball.x + ball.radius< 0 || (ball.x.radius<0 && ball.y > cnvs.height)){
+    if(ball.x + ball.radius< 5 || (ball.x.radius<5 && ball.y > cnvs.height)){
         reset();
         comp.score+=1;
     }
@@ -172,7 +186,7 @@ function render()
 
     drawtext(comp.score , 3*cnvs.width/4 , cnvs.height/5 ,"WHITE");
  
-
+    //keypress(key);
 }
 
 function game()
