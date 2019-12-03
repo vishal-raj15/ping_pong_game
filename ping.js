@@ -15,7 +15,7 @@ const user = {
 }
 
 const comp = {
-    x:cnvs.width*0.9,
+    x:cnvs.width*0.99,
     y:user.y,
     width:10,
     height:220,
