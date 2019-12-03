@@ -6,8 +6,8 @@ cnvs.width = window.innerWidth;
 
 
 const user = {
-    x:0,
-    y:cnvs.height/2 - 50 ,
+    x:cnvs.width*0.01,
+    y:cnvs.height/2  ,
     width:10,
     height:220,
     color:"WHITE",
@@ -15,7 +15,7 @@ const user = {
 }
 
 const comp = {
-    x:cnvs.width - 30,
+    x:cnvs.width*0.99,
     y:user.y,
     width:10,
     height:220,
@@ -27,7 +27,7 @@ const ball = {
     x:cnvs.width/2,
     y:cnvs.height/2,
     radius:10,
-    speed:8,
+    speed:7,
     vx:5,
     vy:0,
     color:"WHITE"
@@ -126,7 +126,7 @@ function collision(b,p){
 function reset(){
     ball.x = cnvs.width/2;
     ball.y = Math.random()*cnvs.height;
-    ball.speed = 8;
+    ball.speed = 7;
     ball.vx = 5;
     ball.vy=5;
 }
@@ -156,7 +156,7 @@ function update()
         let dir = (ball.x < cnvs.width/2) ? 1 : -1;
         ball.vx = dir * ball.speed * Math.cos(ang);
         ball.vy = ball.speed * Math.sin(ang);
-        ball.speed += 0.4;
+        ball.speed += 0.1;
         
     }
     if(ball.x + ball.radius< 5 || (ball.x.radius<5 && ball.y > cnvs.height)){
@@ -195,5 +195,5 @@ function game()
     render();
 }
 
-const framePerSecond = 50;
+const framePerSecond = 100;
 setInterval(game , 1000/framePerSecond);
