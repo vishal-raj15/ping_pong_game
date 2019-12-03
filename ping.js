@@ -101,10 +101,10 @@ document.onkeydown =keypress;
 function keypress(key){
 	if(key.keyCode == "38" && user.y >=0){
 
-		user.y -=20; 
+		user.y -= 20; 
 	}
 	if(key.keyCode == "40"  && user.y < cnvs.height-175){
-		user.y +=20;
+		user.y += 20;
 	}
 }
 
@@ -126,7 +126,7 @@ function collision(b,p){
 function reset(){
     ball.x = cnvs.width/2;
     ball.y = Math.random()*cnvs.height;
-    ball.speed = 8;
+    ball.speed = 7;
     ball.vx = 5;
     ball.vy=5;
 }
@@ -156,7 +156,7 @@ function update()
         let dir = (ball.x < cnvs.width/2) ? 1 : -1;
         ball.vx = dir * ball.speed * Math.cos(ang);
         ball.vy = ball.speed * Math.sin(ang);
-        ball.speed += 0.4;
+        ball.speed += 0.1;
         
     }
     if(ball.x + ball.radius< 5 || (ball.x.radius<5 && ball.y > cnvs.height)){
@@ -195,5 +195,5 @@ function game()
     render();
 }
 
-const framePerSecond = 50;
+const framePerSecond = 100;
 setInterval(game , 1000/framePerSecond);
