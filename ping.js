@@ -4,10 +4,11 @@ cnvs.height = window.innerHeight;
 
 cnvs.width = window.innerWidth;
 
+var aud = new Audio("../x.mp3");
 
 const user = {
-    x:0,
-    y:cnvs.height/2 - 50 ,
+    x:cnvs.width*0.01,
+    y:cnvs.height/2 ,
     width:10,
     height:220,
     color:"WHITE",
@@ -15,7 +16,7 @@ const user = {
 }
 
 const comp = {
-    x:cnvs.width - 30,
+    x:cnvs.width*0.99,
     y:user.y,
     width:10,
     height:220,
@@ -27,7 +28,7 @@ const ball = {
     x:cnvs.width/2,
     y:cnvs.height/2,
     radius:10,
-    speed:8,
+    speed:7,
     vx:5,
     vy:0,
     color:"WHITE"
@@ -103,7 +104,7 @@ function keypress(key){
 
 		user.y -= 20; 
 	}
-	if(key.keyCode == "40"  && user.y < cnvs.height-175){
+	if(key.keyCode == "40"  && user.y <= cnvs.height){
 		user.y += 20;
 	}
 }
@@ -147,6 +148,7 @@ function update()
 
     let player = (ball.x < cnvs.width/2)?user:comp;
     if(collision(ball,player)){
+    	aud.play();
         ball.vx = -ball.vx;
 
         let colldpnt = ball.y - (player.y + player.height/2);
