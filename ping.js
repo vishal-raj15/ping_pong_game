@@ -4,10 +4,11 @@ cnvs.height = window.innerHeight;
 
 cnvs.width = window.innerWidth;
 
-var aud = new Audio("../x.mp3");
+var aud = new Audio("tree.mp3");
 
 const user = {
     x:cnvs.width*0.01,
+
     y:cnvs.height/2 ,
     width:10,
     height:220,
@@ -40,8 +41,8 @@ const ball2 = {
     y: Math.random()*cnvs.height,
     radius:10,
     speed:7,
-    vx:50,
-    vy:50,
+    vx:5,
+    vy:5,
     color:"WHITE"
 
 }
@@ -150,6 +151,7 @@ function update()
     if(collision(ball,player)){
     	aud.play();
         ball.vx = -ball.vx;
+        
 
         let colldpnt = ball.y - (player.y + player.height/2);
 
