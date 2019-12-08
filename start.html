@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ping pong game</title>
+</head>
+<body>
+        <a href="index.html"><p id="blink">CLICK TO START : </p></a>
+        <script type="text/javascript">
+
+
+          var blink = document.getElementById('blink');
+          setInterval(function() {
+             blink.style.opacity = (blink.style.opacity == 0 ? 1 : 0);
+          }, 500);
+          
+
+        </script>
+        
+
+        
+</body>
+<style>
+        #blink{
+      font-size: 90px;
+      font-weight: bold;
+      font-family: sans-serif;
+      transition:0.4s;
+      position: absolute;
+      top:40%;
+      left: 50%;
+      transform: translate(-50% ,-40%);
+      color: #1c87c9;
+      background: white;
+
+    }
+    #blink:hover {
+  background-color:	#FF1493;
+  color: white;
+}
+    body{
+        background: black;
+    }
+</style>
+</html>

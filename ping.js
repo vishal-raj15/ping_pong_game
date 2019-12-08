@@ -11,16 +11,16 @@ const user = {
 
     y:cnvs.height/2 ,
     width:10,
-    height:220,
-    color:"WHITE",
+    height:cnvs.height/4,
+    color:"red",
     score:0
 }
 
 const comp = {
     x:cnvs.width*0.99,
-    y:user.y,
+    y: user.y,
     width:10,
-    height:220,
+    height:cnvs.height/4,
     color:"WHITE",
     score:0
 }
@@ -32,17 +32,6 @@ const ball = {
     speed:7,
     vx:5,
     vy:0,
-    color:"WHITE"
-
-}
-
-const ball2 = {
-    x:cnvs.width/2,
-    y: Math.random()*cnvs.height,
-    radius:10,
-    speed:7,
-    vx:5,
-    vy:5,
     color:"WHITE"
 
 }
@@ -126,7 +115,7 @@ function collision(b,p){
     && b.top < p.bottom;
 }
 function reset(){
-    ball.x = cnvs.width/2;
+    ball.x = Math.random()*cnvs.width;
     ball.y = Math.random()*cnvs.height;
     ball.speed = 7;
     ball.vx = 5;
@@ -142,7 +131,7 @@ function update()
     let cl = 0.1;
     comp.y += (ball.y - (comp.y + comp.height/2))*cl; 
 
-    if(ball.y + ball.radius > cnvs.height || ball.y + ball.radius < 0)
+    if(ball.y + ball.radius > cnvs.height || ball.y + ball.radius < 20)
     {
         ball.vy = -ball.vy;
     }  
@@ -163,7 +152,7 @@ function update()
         ball.speed += 0.1;
         
     }
-    if(ball.x + ball.radius< 5 || (ball.x.radius<5 && ball.y > cnvs.height)){
+    if(ball.x + ball.radius< 5){
         reset();
         comp.score+=1;
     }
