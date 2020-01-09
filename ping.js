@@ -7,7 +7,7 @@ cnvs.width = window.innerWidth;
 var aud = new Audio("tree.mp3");
 
 const user = {
-    x:cnvs.width*0.01,
+    x:cnvs.width*0.03,
 
     y:cnvs.height/2 ,
     width:10,
@@ -17,7 +17,7 @@ const user = {
 }
 
 const comp = {
-    x:cnvs.width*0.99,
+    x:cnvs.width*0.97,
     y: user.y,
     width:10,
     height:cnvs.height/4,
