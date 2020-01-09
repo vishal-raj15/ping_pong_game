@@ -117,8 +117,13 @@ function collision(b,p){
     && b.top < p.bottom;
 }
 function reset(){
+<<<<<<< HEAD
     ball.x = Math.random()*cnvs.width/2;
     ball.y = Math.random()*cnvs.height/2;
+=======
+    ball.x = cnvs.width/2;
+    ball.y = Math.random()*cnvs.height;
+>>>>>>> f05d53c40fe10c08d6ace2579c3f1f199313c82f
     ball.speed = 7;
     ball.vx = 5;
     ball.vy=5;
