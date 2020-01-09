@@ -1,4 +1,4 @@
-const cnvs = document.getElementById("ping");
+const cnvs = document.getElementById("ping2");
 const ctx = cnvs.getContext("2d") ;
 cnvs.height = window.innerHeight;
 
@@ -7,8 +7,7 @@ cnvs.width = window.innerWidth;
 var aud = new Audio("tree.mp3");
 
 const user = {
-    x:cnvs.width*0.01,
-
+    x:cnvs.width*0.03,
     y:cnvs.height/2 ,
     width:10,
     height:cnvs.height/4,
@@ -16,8 +15,8 @@ const user = {
     score:0
 }
 
-const comp = {
-    x:cnvs.width*0.99,
+const user2 = {
+    x:cnvs.width*0.97,
     y: user.y,
     width:10,
     height:cnvs.height/4,
@@ -94,11 +93,33 @@ document.onkeydown =keypress;
 function keypress(key){
 	if(key.keyCode == "38" && user.y>=0){
 
-		user.y -= 20; 
+        user.y -= 30; 
+        
 	}
-	if(key.keyCode == "40"  && user.y <= cnvs.height){
-		user.y += 20;
+	if(key.keyCode == "40"  && user.y <= cnvs.height - user.height){
+		user.y += 30;
+    }
+
+    if(key.keyCode == "87" && user2.y>=0){
+
+        user2.y -= 30; 
+        
 	}
+	if(key.keyCode == "83"  && user2.y <= cnvs.height - user2.height){
+		user2.y += 30;
+    }
+    
+    if((key.keyCode == "38" && user.y>=0) && (key.keyCode == "87" && user2.y>=0)){
+
+        user.y -= 30;
+        user2.y -=30; 
+        
+	}
+	if((key.keyCode == "40"  && user.y <= cnvs.height - user.height) && (key.keyCode == "83"  && user2.y <= cnvs.height - user2.height)){
+        user.y += 30;
+        user2.y +=30;
+    }
+    
 }
 
 
@@ -130,15 +151,12 @@ function update()
     ball.x += ball.vx;
     ball.y += ball.vy;
 
-    let cl = 0.1;
-    comp.y += (ball.y - (comp.y + comp.height/2))*cl; 
-
     if(ball.y + ball.radius > cnvs.height || ball.y + ball.radius < 20)
     {
         ball.vy = -ball.vy;
     }  
 
-    let player = (ball.x < cnvs.width/2)?user:comp;
+    let player = (ball.x < cnvs.width/2)?user:user2;
     if(collision(ball,player)){
     	aud.play();
         ball.vx = -ball.vx;
@@ -154,11 +172,11 @@ function update()
         ball.speed += 0.1;
         
     }
-    if(ball.x + ball.radius< 5){
+    if(ball.x + ball.radius< cnvs.width*0.03){
         reset();
-        comp.score+=1;
+        user2.score+=1;
     }
-    if(ball.x > cnvs.width){
+    if(ball.x > cnvs.width*0.97){
         reset();
         user.score+=1;
     }
@@ -171,7 +189,7 @@ function render()
 
     drawrect(0,0,cnvs.width , cnvs.height,"BLACK");
     drawrect(user.x , user.y , user.width,user.height , "WHITE");
-    drawrect(comp.x , comp.y , comp.width,comp.height , "WHITE");
+    drawrect(user2.x , user2.y , user2.width,user2.height , "WHITE");
 
     drawnet();
     drawcir(ball.x,ball.y , ball.radius,ball.color);
@@ -179,7 +197,7 @@ function render()
 
     drawtext( user.score , cnvs.width/4 , cnvs.height/5,"WHITE");
 
-    drawtext(comp.score , 3*cnvs.width/4 , cnvs.height/5 ,"WHITE");
+    drawtext(user2.score , 3*cnvs.width/4 , cnvs.height/5 ,"WHITE");
  
     //keypress(key);
 }
