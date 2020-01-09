@@ -7,17 +7,31 @@
     <title>ping pong game</title>
 </head>
 <body>
-        <a href="index.html"><p id="blink">CLICK TO START : </p></a>
+        <a href="index.html"><p id="blink">SINGLE PLAYER </p></a>
         <script type="text/javascript">
 
 
           var blink = document.getElementById('blink');
           setInterval(function() {
              blink.style.opacity = (blink.style.opacity == 0 ? 1 : 0);
-          }, 500);
+          }, 300);
           
 
         </script>
+
+        <a href="double.html"><p id="blinks">DOUBLE PLAYER </p></a>
+        <script type="text/javascript">
+
+
+          var blinks = document.getElementById('blinks');
+          setInterval(function() {
+            blinks.style.opacity = (blinks.style.opacity == 0 ? 1 : 0);
+          }, 400);
+          
+
+        </script>
+
+
         
 
         
@@ -34,12 +48,33 @@
       transform: translate(-50% ,-40%);
       color: #1c87c9;
       background: white;
+      border-radius: 20px;
 
     }
     #blink:hover {
   background-color:	#FF1493;
   color: white;
 }
+
+#blinks{
+      font-size: 90px;
+      font-weight: bold;
+      font-family: sans-serif;
+      transition:0.4s;
+      position: absolute;
+      top:60%;
+      left: 50%;
+      transform: translate(-50% ,-40%);
+      color: #1c87c9;
+      background: white;
+      border-radius: 20px;
+
+    }
+    #blinks:hover {
+  background-color:	#FF1493;
+  color: white;
+}
+
     body{
         background: black;
     }

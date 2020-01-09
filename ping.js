@@ -52,7 +52,9 @@ function drawnet()
     }
 }
 
-
+function constraint(y_max , y_min){
+    
+}
 
 function drawrect(x,y,w,h,color)
 {
@@ -90,7 +92,7 @@ function movepaddle(evt)
 document.onkeydown =keypress;
 
 function keypress(key){
-	if(key.keyCode == "38" && user.y >=0){
+	if(key.keyCode == "38" && user.y>=0){
 
 		user.y -= 20; 
 	}
@@ -115,8 +117,8 @@ function collision(b,p){
     && b.top < p.bottom;
 }
 function reset(){
-    ball.x = Math.random()*cnvs.width;
-    ball.y = Math.random()*cnvs.height;
+    ball.x = Math.random()*cnvs.width/2;
+    ball.y = Math.random()*cnvs.height/2;
     ball.speed = 7;
     ball.vx = 5;
     ball.vy=5;
