@@ -6,3 +6,8 @@ use mousepad OR UP/DOWN key to control left paddle
 and (w/s) to use another paddle .
 
 both user's input not working together.
+#
+
+
+
+double player is not working properly
