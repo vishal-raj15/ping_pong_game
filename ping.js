@@ -29,8 +29,8 @@ const ball = {
     x:cnvs.width/2,
     y:cnvs.height/2,
     radius:10,
-    speed:7,
-    vx:5,
+    speed:10,
+    vx:2,
     vy:0,
     color:"WHITE"
 
