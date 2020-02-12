@@ -29,7 +29,7 @@ const ball = {
     x:cnvs.width/2,
     y:cnvs.height/2,
     radius:10,
-    speed:10,
+    speed:9,
     vx:2,
     vy:0,
     color:"WHITE"
@@ -119,9 +119,9 @@ function collision(b,p){
 function reset(){
     ball.x = cnvs.width/2;
     ball.y = Math.random()*cnvs.height/2;
-    ball.speed = 7;
-    ball.vx = 5;
-    ball.vy=5;
+    ball.speed = 9;
+    ball.vx = 2;
+    ball.vy=2;
 }
 
 function update()
